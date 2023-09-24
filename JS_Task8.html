@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <title>JS Task 8</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background: radial-gradient(
+          circle at 50% 10%,
+          rgb(250, 222, 139) 10%,
+          rgb(247, 177, 244) 80%
+        );
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="fw-bolder h1 text-center text-primary">Registration form</div>
+      <form action="#" onsubmit="return validateForm()">
+        <table class="mx-auto">
+          <tr>
+            <td><label>First Name: </label></td>
+            <td>
+              <input
+                id="n1"
+                class="form-control"
+                type="text"
+                onchange="validateForm();"
+              />
+            </td>
+            <td><span id="warningn1"></span></td>
+          </tr>
+
+          <tr>
+            <td><label>Last Name: </label></td>
+            <td>
+              <input
+                id="n2"
+                class="form-control"
+                type="text"
+                onchange="validateForm();"
+              />
+            </td>
+            <td><span id="warningn2"></span></td>
+          </tr>
+
+          <tr>
+            <td><label>Email: </label></td>
+            <td>
+              <input
+                id="e1"
+                class="form-control"
+                type="text"
+                onchange="validateForm();"
+              />
+            </td>
+            <td><span id="warninge1"></span></td>
+          </tr>
+
+          <tr>
+            <td><label>Password: </label></td>
+            <td>
+              <input
+                id="p1"
+                class="form-control"
+                type="text"
+                onchange="validateForm();"
+              />
+            </td>
+            <td><span id="warningp1"></span></td>
+          </tr>
+
+          <tr>
+            <td><label>Re-enter Password: </label></td>
+            <td>
+              <input
+                id="p2"
+                class="form-control"
+                type="text"
+                onchange="validateForm();"
+              />
+            </td>
+            <td><span id="warningp2"></span></td>
+          </tr>
+
+          <tr>
+            <td rowspan="2"><label>Gender: </label></td>
+            <td><input type="radio" /> Male</td>
+          </tr>
+          <tr>
+            <td><input type="radio" /> Female</td>
+          </tr>
+
+          <tr>
+            <td><label>Age: </label></td>
+            <td>
+              <input
+                id="a1"
+                class="form-control"
+                type="text"
+                onchange="validateForm();"
+              />
+            </td>
+            <td><span id="warninga1"></span></td>
+          </tr>
+
+          <tr>
+            <td><label>Phone Number: </label></td>
+            <td>
+              <input
+                id="pn1"
+                class="form-control"
+                type="text"
+                onchange="validateForm();"
+              />
+            </td>
+            <td><span id="warningpn1"></span></td>
+          </tr>
+
+          <tr>
+            <td><label>Address: </label></td>
+            <td>
+              <textarea
+                id="add1"
+                rows="3"
+                class="w-100"
+                onchange="validateForm();"
+              ></textarea>
+            </td>
+            <td><span id="warningadd1"></span></td>
+          </tr>
+
+          <tr>
+            <td><label>State: </label></td>
+            <td>
+              <input
+                id="s1"
+                class="form-control"
+                type="text"
+                onchange="validateForm();"
+              />
+            </td>
+            <td><span id="warnings1"></span></td>
+          </tr>
+
+          <tr>
+            <td>Country:</td>
+            <td>
+              <select class="form-select">
+                <option selected>Choose your country</option>
+                <option value="1">Country 1</option>
+                <option value="2">Country 2</option>
+                <option value="3">Country 3</option>
+              </select>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Languages Known:</td>
+            <td>
+              <input type="checkbox" /> English
+              <input type="checkbox" /> Kannada <input type="checkbox" /> Hindi
+              <input type="checkbox" /> Telugu
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2">
+              <input type="checkbox" checked />Hereby I declare all the given
+              details are true
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="text-end">
+              Login to <a href="#">Ethnus</a> website.
+            </td>
+          </tr>
+
+          <tr class="text-center">
+            <td colspan="2">
+              <button
+                class="btn btn-danger border-dark"
+                style="border-radius: 40px"
+                type="submit"
+              >
+                Register
+              </button>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+
+    <script>
+      function validateForm() {
+        var fname = document.getElementById("n1").value;
+        var lname = document.getElementById("n2").value;
+        var email = document.getElementById("e1").value;
+        var pass1 = document.getElementById("p1").value;
+        var pass2 = document.getElementById("p2").value;
+        var age = document.getElementById("a1").value;
+        var ph = document.getElementById("pn1").value;
+        var add = document.getElementById("add1").value;
+        var state = document.getElementById("s1").value;
+        var cnt = 0;
+
+        if (fname.length < 5) {
+          cnt++;
+          document.getElementById("warningn1").innerText = "POOR";
+          document.getElementById("warningn1").style.color = "red";
+          document.getElementById("n1").style.borderColor = "red";
+        } else {
+          document.getElementById("warningn1").innerText = "";
+          document.getElementById("n1").style.borderColor = "";
+        }
+
+        if (lname.length < 5) {
+          cnt++;
+          document.getElementById("warningn2").innerText = "POOR";
+          document.getElementById("warningn2").style.color = "red";
+          document.getElementById("n2").style.borderColor = "red";
+        } else {
+          document.getElementById("warningn2").innerText = "";
+          document.getElementById("n2").style.borderColor = "";
+        }
+
+        if (
+          !email.match(
+            /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+          )
+        ) {
+          cnt++;
+          document.getElementById("warninge1").innerText = "POOR";
+          document.getElementById("warninge1").style.color = "red";
+          document.getElementById("e1").style.borderColor = "red";
+        } else {
+          document.getElementById("warninge1").innerText = "";
+          document.getElementById("e1").style.borderColor = "";
+        }
+
+        if (pass1.length < 8) {
+          cnt++;
+          document.getElementById("warningp1").innerText = "POOR";
+          document.getElementById("warningp1").style.color = "red";
+          document.getElementById("p1").style.borderColor = "red";
+        } else {
+          document.getElementById("warningp1").innerText = "";
+          document.getElementById("p1").style.borderColor = "";
+        }
+
+        if ((pass2.length < 8) | (pass2 != pass1)) {
+          cnt++;
+          document.getElementById("warningp2").innerText = "POOR OR MISMATCH";
+          document.getElementById("warningp2").style.color = "red";
+          document.getElementById("p2").style.borderColor = "red";
+        } else {
+          document.getElementById("warningp2").innerText = "";
+          document.getElementById("p2").style.borderColor = "";
+        }
+
+        if (age.length === 0 || isNaN(parseInt(age)) || age < 18 || age > 100) {
+          cnt++;
+          document.getElementById("warninga1").innerText = "POOR";
+          document.getElementById("warninga1").style.color = "red";
+          document.getElementById("a1").style.borderColor = "red";
+        } else {
+          document.getElementById("warninga1").innerText = "";
+          document.getElementById("a1").style.borderColor = "";
+        }
+
+        if (ph.length < 10) {
+          cnt++;
+          document.getElementById("warningpn1").innerText = "POOR";
+          document.getElementById("warningpn1").style.color = "red";
+          document.getElementById("pn1").style.borderColor = "red";
+        } else {
+          document.getElementById("warningpn1").innerText = "";
+          document.getElementById("pn1").style.borderColor = "";
+        }
+
+        if (add.length < 10) {
+          cnt++;
+          document.getElementById("warningadd1").innerText = "POOR";
+          document.getElementById("warningadd1").style.color = "red";
+          document.getElementById("add1").style.borderColor = "red";
+        } else {
+          document.getElementById("warningadd1").innerText = "";
+          document.getElementById("add1").style.borderColor = "";
+        }
+
+        if (state.length < 3) {
+          cnt++;
+          document.getElementById("warnings1").innerText = "POOR";
+          document.getElementById("warnings1").style.color = "red";
+          document.getElementById("s1").style.borderColor = "red";
+        } else {
+          document.getElementById("warnings1").innerText = "";
+          document.getElementById("s1").style.borderColor = "";
+        }
+
+        return cnt === 0;
+      }
+    </script>
+  </body>
+</html>

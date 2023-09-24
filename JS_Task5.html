@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <title>JS Task 5</title>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <form action="#" onsubmit="return validateForm()">
+        <table class="mx-auto">
+          <tr>
+            <td><label>Name: </label></td>
+            <td><input id="i1" class="form-control" type="text" /></td>
+            <td><span id="warningname"></span></td>
+          </tr>
+
+          <tr>
+            <td><label>Email: </label></td>
+            <td>
+              <input id="i2" class="form-control" type="text" />
+            </td>
+            <td><span id="warningmail"></span></td>
+          </tr>
+          <tr>
+            <td><label>Website: </label></td>
+            <td><input id="i3" class="form-control" type="text" /></td>
+            <td><span id="warningweb"></span></td>
+          </tr>
+          <tr>
+            <td><label>Message: </label></td>
+            <td>
+              <textarea id="i4" rows="3" class="w-100"></textarea>
+            </td>
+            <td><span id="warningmsg"></span></td>
+          </tr>
+
+          <tr class="text-center">
+            <td colspan="2">
+              <button class="btn btn-light" type="submit">Submit</button>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+
+    <script>
+      function validateForm() {
+        var name = document.getElementById("i1").value;
+        var email = document.getElementById("i2").value;
+        var url = document.getElementById("i3").value;
+        var msg = document.getElementById("i4").value;
+        var cnt = 0;
+
+        if (name.length < 5) {
+          cnt++;
+          document.getElementById("warningname").innerText =
+            "This field is required";
+          document.getElementById("warningname").style.color = "red";
+          document.getElementById("i1").style.borderColor = "red";
+        } else {
+          document.getElementById("warningname").innerText = "";
+          document.getElementById("i1").style.borderColor = "";
+        }
+
+        if (
+          !email.match(
+            /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+          )
+        ) {
+          cnt++;
+          document.getElementById("warningmail").innerText =
+            "A valid email address is required";
+          document.getElementById("warningmail").style.color = "red";
+          document.getElementById("i2").style.borderColor = "red";
+        } else {
+          document.getElementById("warningmail").innerText = "";
+          document.getElementById("i2").style.borderColor = "";
+        }
+
+        if (
+          !url.match(
+            /(?:https?):\/\/(\w+:?\w*)?(\S+)(:\d+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/
+          )
+        ) {
+          cnt++;
+          document.getElementById("warningweb").innerText =
+            "A valid URL is required";
+          document.getElementById("warningweb").style.color = "red";
+          document.getElementById("i3").style.borderColor = "red";
+        } else {
+          document.getElementById("warningweb").innerText = "";
+          document.getElementById("i3").style.borderColor = "";
+        }
+
+        if (msg.length < 10) {
+          cnt++;
+          document.getElementById("warningmsg").innerText =
+            "This field is required";
+          document.getElementById("warningmsg").style.color = "red";
+          document.getElementById("i4").style.borderColor = "red";
+        } else {
+          document.getElementById("warningmsg").innerText = "";
+          document.getElementById("i4").style.borderColor = "";
+        }
+
+        return cnt === 0;
+      }
+    </script>
+  </body>
+</html>

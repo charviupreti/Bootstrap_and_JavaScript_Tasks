@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Task 7</title>
+  </head>
+  <body>
+    <img id="trainimg" src="./train.png" />
+    <center>
+      <h1 style="color: blue">
+        Click the following buttons to handle animation
+      </h1>
+      <input type="button" value="Start" onclick="moveRight();" />
+      <input type="button" value="Stop" onclick="stop();" />
+    </center>
+    <script>
+      var obj = null;
+      var animate;
+
+      function init() {
+        obj = document.getElementById("trainimg");
+        obj.style.position = "relative";
+        obj.style.left = "0px";
+      }
+      function moveRight() {
+        var currentPosition = parseInt(obj.style.left);
+        var maxWidth = window.innerWidth - obj.width;
+
+        if (currentPosition < maxWidth) {
+          obj.style.left = currentPosition + 5 + "px";
+          animate = setTimeout(moveRight, 12);
+        } else {
+          obj.style.left = "0px";
+          moveRight();
+        }
+      }
+
+      function stop() {
+        clearTimeout(animate);
+      }
+      window.onload = init;
+    </script>
+  </body>
+</html>
